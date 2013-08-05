@@ -1,0 +1,20 @@
+# jas
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+$if mode=emacs
+    # aterm / eterm (control + arrow key)
+    "\eOc": forward-word
+    "\eOd": backward-word
+    # gnome / others (escape + arrow key)
+    "\e[5C": forward-word
+    "\e[5D": backward-word
+    # konsole / xterm / rxvt (escape + arrow key)
+    "\e\e[C": forward-word
+    "\e\e[D": backward-word
+    # aterm / eterm (control + arrow key)
+    "\eOc": forward-word
+    "\eOd": backward-word
+    # konsole (alt + arrow key)
+    "\e[1;3C": forward-word
+    "\e[1;3D": backward-word
+$endif
