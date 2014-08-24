@@ -16,7 +16,7 @@ download () {
         tfile=$2
     fi
     if [ "$(which curl)" != "" ]; then
-        curl -s https://gist.github.com/possi/6155726/raw/${1} > ${tfile}
+        curl -s -S https://gist.github.com/possi/6155726/raw/${1} > ${tfile}
     elif [ "$(which wget)" != "" ]; then
         wget -q --no-check-certificate -O ${tfile} https://gist.github.com/possi/6155726/raw/${1}
     else
@@ -29,7 +29,7 @@ download .inputrc .tmp_inputrc
 if [ ! -f .inputrc ] || grep -v -q "#jas" .inputrc; then
     if [ -f /etc/inputrc ]; then
         cp /etc/inputrc .inputrc
-        echo "" >> .profile
+        echo "" >> .inputrc
     fi
     cat .tmp_inputrc >> .inputrc
 fi
