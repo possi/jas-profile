@@ -1,9 +1,9 @@
 #!/bin/bash
 # -- https://gist.github.com/possi/6155726 --
 # Install via:
-#  curl -s https://gist.github.com/possi/6155726/raw/setup.sh | bash
+#  curl -s https://gist.githubusercontent.com/possi/6155726/raw/setup.sh | bash
 # or:
-#  wget -O - https://gist.github.com/possi/6155726/raw/setup.sh | bash
+#  wget -O - https://gist.githubusercontent.com/possi/6155726/raw/setup.sh | bash
 
 echo "Starting jas Bash Env configuration..."
 
@@ -16,9 +16,9 @@ download () {
         tfile=$2
     fi
     if [ "$(which curl)" != "" ]; then
-        curl -s -S https://gist.github.com/possi/6155726/raw/${1} > ${tfile}
+        curl -s -S https://gist.githubusercontent.com/possi/6155726/raw/${1} > ${tfile}
     elif [ "$(which wget)" != "" ]; then
-        wget -q --no-check-certificate -O ${tfile} https://gist.github.com/possi/6155726/raw/${1}
+        wget -q --no-check-certificate -O ${tfile} https://gist.githubusercontent.com/possi/6155726/raw/${1}
     else
         echo "No curl or wget to download files found."
         exit 1
