@@ -16,7 +16,7 @@ download () {
         tfile=$2
     fi
     if [ "$(which curl)" != "" ]; then
-        curl -s -S https://gist.githubusercontent.com/possi/6155726/raw/${1} > ${tfile}
+        curl -s -S -k https://gist.githubusercontent.com/possi/6155726/raw/${1} > ${tfile}
     elif [ "$(which wget)" != "" ]; then
         wget -q --no-check-certificate -O ${tfile} https://gist.githubusercontent.com/possi/6155726/raw/${1}
     else
