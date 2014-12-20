@@ -79,4 +79,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source .config/jas-profile/.profile
+source $HOME/.config/jas-profile/.profile

@@ -4,7 +4,7 @@ TARGET_DIR="${HOME}/${_TARGET_PATH}"
 LINK_TARGET_DIR="${_TARGET_PATH}"
 REPOSITORY="https://github.com/possi/jas-profile.git"
 PROFILE_SRC="# jas-profile
-test -f ${LINK_TARGET_DIR}/.profile && . ${LINK_TARGET_DIR}/.profile
+test -f \${HOME}/${LINK_TARGET_DIR}/.profile && . \${HOME}/${LINK_TARGET_DIR}/.profile
 # end jas-profile"
 
 download () {
