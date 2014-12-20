@@ -2,7 +2,7 @@
 _TARGET_PATH=".config/jas-profile"
 TARGET_DIR="${HOME}/${_TARGET_PATH}"
 LINK_TARGET_DIR="${_TARGET_PATH}"
-REPOSITORY="git@github.com:possi/jas-profile.git"
+REPOSITORY="https://github.com/possi/jas-profile.git"
 PROFILE_SRC="# jas-profile
 test -f ${LINK_TARGET_DIR}/.profile && . ${LINK_TARGET_DIR}/.profile
 # end jas-profile"
@@ -68,10 +68,10 @@ function install_file_link() {
     f="${HOME}/${1}"
     if [ "" != "${2}" ]; then
         lt="${LINK_TARGET_DIR}/${2}"
-        t="$(realpath "${TARGET_DIR}/${2}")"
+        t="${TARGET_DIR}/${2}"
     else
         lt="${LINK_TARGET_DIR}/${1}"
-        t="$(realpath "${TARGET_DIR}/${1}")"
+        t="${TARGET_DIR}/${1}"
     fi
 
     if [ -L "$f" ]; then
@@ -143,18 +143,18 @@ function merge_inputrc() {
 # Main-Commands
 function install {
     git_submodule_install
-    update_vim
     update_symlinks
     modify_profile
+    update_vim
 }
 function update {
     pushd "${TARGET_DIR}" >/dev/null
     git pull
     popd >/dev/null
     git_submodule_install
-    update_vim
     update_symlinks
     modify_profile
+    update_vim
 }
 
 if [ ! -d "${HOME}" ]; then
@@ -169,9 +169,6 @@ case "$1" in
     update)
         update
     ;;
-    #test)
-    #    modify_profile
-    #;;
     *)
         if [ "bash" = "$0" ]; then
             # Quick-Setup
@@ -186,6 +183,7 @@ case "$1" in
 
             mkdir -P $(dirname "${TARGET_DIR}")
             git clone "${REPOSITORY}" "${TARGET_DIR}"
+            chmod u+x "${TARGET_DIR}/setup.sh"
             bash "${TARGET_DIR}/setup.sh" install-cloned
         else
             usage
