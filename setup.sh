@@ -181,7 +181,7 @@ case "$1" in
                 echo "${TARGET_DIR}/setup.sh install-cloned"
             fi
 
-            mkdir -P $(dirname "${TARGET_DIR}")
+            mkdir -p $(dirname "${TARGET_DIR}")
             git clone "${REPOSITORY}" "${TARGET_DIR}"
             chmod u+x "${TARGET_DIR}/setup.sh"
             bash "${TARGET_DIR}/setup.sh" install-cloned
