@@ -1,4 +1,4 @@
-# jas
+# jas-profile
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
 $if mode=emacs
@@ -18,3 +18,4 @@ $if mode=emacs
     "\e[1;3C": forward-word
     "\e[1;3D": backward-word
 $endif
+# end jas-profile

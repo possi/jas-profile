@@ -49,3 +49,11 @@ alias defchmod664='chmod -R 664 . && find . -type d -exec chmod a+x {} \;'
 alias defchmod644='chmod -R 644 . && find . -type d -exec chmod a+x {} \;'
 
 alias wget="wget --trust-server-names"
+alias vi='vim'
+
+d=".config/jas-profile"
+h="$(hostname)"
+s="$(basename $SHELL)"
+test -f ${d}/.profile.${h} && . ${d}/.profile.${h}
+test -f ${d}/.profile.${s} && . ${d}/.profile.${s}
+test -f ${d}/.profile.${h}.${s} && . ${d}/.profile.${h}.${s}
