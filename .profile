@@ -1,13 +1,7 @@
 # jas
 export HISTSIZE=2000
 
-if test "$UID" = 0 ; then
-    PS1='\[\033[01;31m\]\h:\[\033[01;34m\]\w # \[\033[00m\]'
-else
-    PS1='\[\033[01;32m\]\u\[\033[01;31m\]@\h:\[\033[01;34m\]\w # \[\033[00m\]'
-fi
-
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
     alias ll='ls -l'
     alias l='ls -alh'
 else

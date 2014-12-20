@@ -101,6 +101,9 @@ function update_symlinks {
     install_file_link .vimrc
     install_file_link .screenrc
     install_file_link .inputrc $(merge_inputrc)
+    if [ "$(which zsh)" != "" ]; then
+        install_file_link .zshrc
+    fi
 }
 function git_submodule_install {
     pushd "${TARGET_DIR}" >/dev/null
