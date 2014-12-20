@@ -112,7 +112,7 @@ function git_submodule_install {
 }
 function update_vim {
     echo -n "Updating vim-plugins... "
-    vim +PluginInstall +qall
+    vim +PluginInstall +qall 2>/dev/null
     echo "done"
 }
 function modify_profile {
