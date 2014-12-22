@@ -1,0 +1,3 @@
+#alias php="/cygdrive/c/xampp/php/php.exe"
+export PATH="$PATH:/opt/ffmpeg/bin/:/opt/nmap/"
+export DISPLAY=localhost:0.0
