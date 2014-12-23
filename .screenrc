@@ -1,5 +1,6 @@
 # jas
 shell -$SHELL
-termcapinfo  xterm Z0=\E[?3h:Z1=\E[?3l:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+termcapinfo  xterm* Z0=\E[?3h:Z1=\E[?3l:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+#termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 startup_message off
 hardstatus alwayslastline "%{=r .}%-Lw%{= .}%L> %n%h %t %{-}%+Lw%-8=%{= .} %c  "
