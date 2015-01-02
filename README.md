@@ -23,3 +23,12 @@ Recommended cygwin enhancements
 -------------------------------
 * [apt-cyg](https://github.com/transcode-open/apt-cyg)
 * [OH MY CYGWIN](https://github.com/haithembelhaj/oh-my-cygwin)
+
+
+Internals:
+----------
+
+Update all dependencies:
+```bash
+git submodule -q foreach git pull -u origin master
+```
