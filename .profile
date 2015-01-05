@@ -1,6 +1,14 @@
 # jas
 export HISTSIZE=2000
 
+case "$TERM" in
+    xterm*)
+        if [ "$COLORTERM" = "xfce4-terminal" ]; then
+            export TERM=xterm-256color
+        fi
+    ;;
+esac
+
 if [ "$(uname)" = "Darwin" ]; then
     alias ll='ls -l'
     alias l='ls -alh'
