@@ -41,13 +41,15 @@ key[PageDown]=${terminfo[knp]}
 bindkey "[1;3D" backward-word  # Alt-Left
 bindkey "[1;3C" forward-word   # Alt-Right
 
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-function zle-line-init () {
-    echoti smkx
-}
-function zle-line-finish () {
-    echoti rmkx
-}
-zle -N zle-line-init
-zle -N zle-line-finish  
+if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
+    # Finally, make sure the terminal is in application mode, when zle is
+    # active. Only then are the values from $terminfo valid.
+    function zle-line-init () {
+        echoti smkx
+    }
+    function zle-line-finish () {
+        echoti rmkx
+    }
+    zle -N zle-line-init
+    zle -N zle-line-finish  
+fi

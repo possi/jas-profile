@@ -80,4 +80,4 @@ source $ZSH/../.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source $HOME/.config/jas-profile/.profile
+source $HOME/.config/jas-profile/.profile zsh

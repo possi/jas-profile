@@ -48,7 +48,12 @@ export EDITOR='/usr/bin/vim'
 
 d="$HOME/.config/jas-profile"
 h="$(hostname)"
-s="$(basename $SHELL)"
+if [ -n "$1" ]; then
+    s="$1"
+else
+    #s="$(basename $SHELL)"
+    s="$0"
+fi
 test -f ${d}/.profile.${h} && . ${d}/.profile.${h}
 test -f ${d}/.profile.${s} && . ${d}/.profile.${s}
 test -f ${d}/.profile.${h}.${s} && . ${d}/.profile.${h}.${s}
