@@ -54,6 +54,8 @@ alias wget="wget --trust-server-names"
 alias vi='vim'
 export EDITOR='/usr/bin/vim'
 
+alias jas-profile="$HOME/.config/jas-profile/setup.sh"
+
 d="$HOME/.config/jas-profile"
 h="$(hostname)"
 if [ -n "$1" ]; then

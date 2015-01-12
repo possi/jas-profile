@@ -16,7 +16,9 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim' " Ctrl+P für Regex Datei öffnen
 Plugin 'shawncplus/phpcomplete.vim' " PHP Autocomplete
-Plugin 'ervandew/supertab' " Tab-Autocomplete
+"Plugin 'ervandew/supertab' " Tab-Autocomplete
+Plugin 'bling/vim-airline'  " Colored Statusbar
+Plugin 'scrooloose/nerdtree' " File-Tree-Explorer
 
 Plugin 'godlygeek/csapprox' " Farbschema-Dependency
 Plugin 'vim-scripts/AfterColors.vim' " Farbschema-Customizing
@@ -56,13 +58,27 @@ if has("autocmd")
 endif
 
 " Omni-Complete with tab
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 "let g:SuperTabDefaultCompletionType = "context"
 
 " Immediately Close Preview-Box
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "set completeopt-=preview  " Disable Preview-Box complete
+
+" NerdTree
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1) | q | endif " AutoClose if only NerdTree open
+nmap <F1> :bp!<CR>
+imap <F1> <Esc>:bp!<CR>
+nmap <F2> :bn!<CR>
+imap <F2> <Esc>:bn!<CR>
+nmap <F3> :bd!<CR>
+
+" Vim Airline
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+set laststatus=2
 
 color spacecadet " modified
 "color spacegray
