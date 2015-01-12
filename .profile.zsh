@@ -38,8 +38,18 @@ key[PageDown]=${terminfo[knp]}
 #[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   history-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" history-search-forward
+bindkey "^[[5~" history-search-backward # PageUp
+bindkey "^[[6~" history-search-foward   # PageDown
 bindkey "[1;3D" backward-word  # Alt-Left
 bindkey "[1;3C" forward-word   # Alt-Right
+
+# putty, dev.point-rouge.de
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[[D" backward-word # ctrl?
+bindkey "^[[C" forward-word
+bindkey "^[^[OD" backward-word # test?
+bindkey "^[^[OC" forward-word
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
