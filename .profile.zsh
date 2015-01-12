@@ -51,13 +51,15 @@ bindkey "^[[C" forward-word
 bindkey "^[^[OD" backward-word # test?
 bindkey "^[^[OC" forward-word
 
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-function zle-line-init () {
-    echoti smkx
-}
-function zle-line-finish () {
-    echoti rmkx
-}
-zle -N zle-line-init
-zle -N zle-line-finish  
+if [[ -n ${terminfo[smkx]} ]] && [[ -n ${terminfo[rmkx]} ]]; then
+    # Finally, make sure the terminal is in application mode, when zle is
+    # active. Only then are the values from $terminfo valid.
+    function zle-line-init () {
+        echoti smkx
+    }
+    function zle-line-finish () {
+        echoti rmkx
+    }
+    zle -N zle-line-init
+    zle -N zle-line-finish  
+fi
