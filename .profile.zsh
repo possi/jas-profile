@@ -8,6 +8,8 @@ PROMPT='%(!..%{$fg_bold[green]%}%n%{$fg_bold[cyan]%}@)%{$fg_bold[cyan]%}%m %{$fg
 #ZSH_THEME_GIT_PROMPT_PREFIX="("
 #ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' accept-exact-dirs true
 
 ##
 ## http://zshwiki.org/home/zle/bindkeys
