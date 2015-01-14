@@ -24,6 +24,11 @@ Recommended cygwin enhancements
 * [apt-cyg](https://github.com/transcode-open/apt-cyg)
 * [OH MY CYGWIN](https://github.com/haithembelhaj/oh-my-cygwin)
 
+My Defaults
+-----------
+* Cygwin-Font: Consola with PowerLine ([consola.ttf](https://github.com/nicolalamacchia/powerline-consolas))
+* Ubuntu-Font: [DejaVu Sans Mono for Powerline](https://github.com/powerline/fonts)
+* Terminal-Size: 144 x 48
 
 Internals:
 ----------
