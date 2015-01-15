@@ -54,6 +54,10 @@ alias wget="wget --trust-server-names"
 alias vi='vim'
 export EDITOR='/usr/bin/vim'
 
+if [ ! -z "$WINDIR" ]; then
+    alias explorer-here='if [ -z "$1" ]; then explorer.exe /e,`cygpath -w "$PWD"`; else explorer.exe /e,`cygpath -w "$1"`; fi; true'
+fi
+
 alias jas-profile="$HOME/.config/jas-profile/setup.sh"
 
 d="$HOME/.config/jas-profile"
