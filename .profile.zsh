@@ -41,7 +41,7 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" history-beginning-search-forward
 bindkey "^[[5~" history-beginning-search-backward # PageUp
-bindkey "^[[6~" history-beginning-search-foward   # PageDown
+bindkey "^[[6~" history-beginning-search-forward   # PageDown
 bindkey "[1;3D" backward-word  # Alt-Left
 bindkey "[1;3C" forward-word   # Alt-Right
 
