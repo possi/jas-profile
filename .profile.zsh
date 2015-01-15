@@ -38,10 +38,10 @@ key[PageDown]=${terminfo[knp]}
 #[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
 #[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
 #[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   history-search-backward
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" history-search-forward
-bindkey "^[[5~" history-search-backward # PageUp
-bindkey "^[[6~" history-search-foward   # PageDown
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" history-beginning-search-forward
+bindkey "^[[5~" history-beginning-search-backward # PageUp
+bindkey "^[[6~" history-beginning-search-foward   # PageDown
 bindkey "[1;3D" backward-word  # Alt-Left
 bindkey "[1;3C" forward-word   # Alt-Right
 
