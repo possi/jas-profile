@@ -9,7 +9,7 @@ Setup
 ```bash
 mkdir -p ~/.config;
 git clone git@github.com:possi/jas-profile.git ~/.config/jas-profile;
-sh ~/.config/jas-profile/setup.sh install-cloned;
+bash ~/.config/jas-profile/setup.sh install-cloned;
 ```
 
 **Quick-Setup:**
