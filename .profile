@@ -1,14 +1,18 @@
 # jas
-export HISTSIZE=2000
-export LANGUAGE="en_US.utf8 en_US.UTF-8 en_US C"
-
 case "$TERM" in
+    dumb)
+        # Do not source .profile for X-Displays
+        return
+    ;;
     xterm*)
         if [ "$COLORTERM" = "xfce4-terminal" ]; then
             export TERM=xterm-256color
         fi
     ;;
 esac
+
+export HISTSIZE=2000
+export LANGUAGE="en_US.utf8 en_US.UTF-8 en_US C"
 
 if [ "$(uname)" = "Darwin" ]; then
     alias ll='ls -l'
