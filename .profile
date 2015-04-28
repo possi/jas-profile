@@ -13,6 +13,9 @@ esac
 
 export HISTSIZE=2000
 export LANGUAGE="en_US.utf8 en_US.UTF-8 en_US C"
+if [ "$LANG" = "" ]; then
+    export LANG="en_US.UTF-8"
+fi
 
 if [ "$(uname)" = "Darwin" ]; then
     alias ll='ls -l'
