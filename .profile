@@ -1,13 +1,21 @@
 # jas
-export HISTSIZE=2000
-
 case "$TERM" in
+    dumb)
+        # Do not source .profile for X-Displays
+        return
+    ;;
     xterm*)
         if [ "$COLORTERM" = "xfce4-terminal" ]; then
             export TERM=xterm-256color
         fi
     ;;
 esac
+
+export HISTSIZE=2000
+export LANGUAGE="en_US.utf8 en_US.UTF-8 en_US C"
+if [ "$LANG" = "" ]; then
+    export LANG="en_US.UTF-8"
+fi
 
 if [ "$(uname)" = "Darwin" ]; then
     alias ll='ls -l'
@@ -54,9 +62,17 @@ alias wget="wget --trust-server-names"
 alias vi='vim'
 export EDITOR='/usr/bin/vim'
 
-alias jas-profile="$HOME/.config/jas-profile/setup.sh"
+if [ ! -z "$WINDIR" ]; then
+    alias explorer-here='if [ -z "$1" ]; then explorer.exe /e,`cygpath -w "$PWD"`; else explorer.exe /e,`cygpath -w "$1"`; fi; true'
+fi
 
 d="$HOME/.config/jas-profile"
+alias jas-profile="$HOME/.config/jas-profile/setup.sh"
+
+if [ -f "$HOME/.ssh/id_dsa" ] || [ -f "$HOME/.ssh/id_rsa" ]; then
+    . ${d}/.ssh_agent
+fi
+
 h="$(hostname)"
 if [ -n "$1" ]; then
     s="$1"

@@ -9,7 +9,7 @@ Setup
 ```bash
 mkdir -p ~/.config;
 git clone git@github.com:possi/jas-profile.git ~/.config/jas-profile;
-sh ~/.config/jas-profile/setup.sh install-cloned;
+bash ~/.config/jas-profile/setup.sh install-cloned;
 ```
 
 **Quick-Setup:**
@@ -23,6 +23,23 @@ Recommended cygwin enhancements
 -------------------------------
 * [apt-cyg](https://github.com/transcode-open/apt-cyg)
 * [OH MY CYGWIN](https://github.com/haithembelhaj/oh-my-cygwin)
+* chere-Package with icon added:
+  ```reg
+  Windows Registry Editor Version 5.00
+  
+  [HKEY_CLASSES_ROOT\Directory\Background]
+  
+  [HKEY_CLASSES_ROOT\Directory\Background\shell]
+  
+  [HKEY_CLASSES_ROOT\Directory\Background\shell\cygwin64_zsh]
+  "Icon"="D:\\cygwin\\Cygwin-Terminal.ico"
+  
+  [HKEY_CLASSES_ROOT\Directory\shell]
+  
+  [HKEY_CLASSES_ROOT\Directory\shell\cygwin64_zsh]
+  "Icon"="D:\\cygwin\\Cygwin-Terminal.ico"
+  ```
+
 
 My Defaults
 -----------
