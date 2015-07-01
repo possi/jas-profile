@@ -14,7 +14,9 @@ esac
 export HISTSIZE=2000
 export LANGUAGE="en_US.utf8 en_US.UTF-8 en_US C"
 if [ "$LC_ALL" = "" ]; then
-    export LC_ALL="C.UTF-8"
+    if (locale -a | grep C.UTF-8 > /dev/null); then
+        export LC_ALL="C.UTF-8"
+    fi
 fi
 if [ "$LANG" = "" ]; then
     export LANG="en_US.UTF-8"
