@@ -6,6 +6,9 @@ REPOSITORY="https://github.com/possi/jas-profile.git"
 PROFILE_SRC="# jas-profile
 test -f \${HOME}/${LINK_TARGET_DIR}/.profile && . \${HOME}/${LINK_TARGET_DIR}/.profile
 # end jas-profile"
+XPROFILE_SRC="# jas-profile
+test -f \${HOME}/${LINK_TARGET_DIR}/.xprofile && . \${HOME}/${LINK_TARGET_DIR}/.xprofile
+# end jas-profile"
 
 download () {
     SOURCE_REP="https://raw.githubusercontent.com/possi/jas-profile/master/"
@@ -128,6 +131,19 @@ function modify_profile {
         sed -i '/^# jas-profile/,/^# end jas-profile/ c \'"$nsrc" "${HOME}/.profile"
     fi
 }
+function modify_xprofile {
+    if [ ! -e "${HOME}/.xprofile" ]; then
+        echo "Creating ~/.xprofile"
+        echo -e "$XPROFILE_SRC" > "${HOME}/.xprofile"
+    elif ! grep -q "# jas-profile" "${HOME}/.xprofile"; then
+        echo "Appending to ~/.xprofile"
+        echo -e "\n$XPROFILE_SRC" >> "${HOME}/.xprofile"
+    else
+        echo "Updating ~/.xprofile"
+        nsrc="$(echo -e "$XPROFILE_SRC" | sed ':a;N;$!ba;s/\n/\\n/g')"
+        sed -i '/^# jas-profile/,/^# end jas-profile/ c \'"$nsrc" "${HOME}/.xprofile"
+    fi
+}
 function merge_inputrc() {
     if [ -e /etc/inputrc ]; then
         cat /etc/inputrc > "${TARGET_DIR}/.inputrc.merged"
@@ -145,6 +161,9 @@ function install {
     git_submodule_install
     update_symlinks
     modify_profile
+    if [ "$(which startx)" != "" ]; then
+        modify_xprofile
+    fi
     update_vim
 }
 function update {
@@ -153,6 +172,9 @@ function update {
     popd >/dev/null
     git_submodule_install
     update_symlinks
+    if [ "$(which zsh)" != "" ]; then
+        modify_xprofile
+    fi
     modify_profile
     update_vim
 }

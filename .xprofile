@@ -1,0 +1,5 @@
+# jas xorg
+export LANGUAGE="de_DE.utf8 de_DE.UTF-8 de_DE C"
+if [ "$LANG" = "" ]; then
+    export LANG="de_DE.UTF-8"
+fi
