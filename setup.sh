@@ -154,6 +154,14 @@ function merge_inputrc() {
         echo ".inputrc"
     fi
 }
+function include_gitconfig() {
+    if git config --global --get-all include.path | grep .config/jas-profile/.gitconfig >/dev/null; then
+        echo ".gitconfig already included"
+    else
+        git config --global --add include.path .config/jas-profile/.gitconfig
+        echo "incuding .gitconfig"
+    fi
+}
 
 
 # Main-Commands
@@ -164,6 +172,7 @@ function install {
     if [ "$(which startx)" != "" ]; then
         modify_xprofile
     fi
+    include_gitconfig
     update_vim
 }
 function update {
@@ -172,10 +181,11 @@ function update {
     popd >/dev/null
     git_submodule_install
     update_symlinks
+    modify_profile
     if [ "$(which zsh)" != "" ]; then
         modify_xprofile
     fi
-    modify_profile
+    include_gitconfig
     update_vim
 }
 
