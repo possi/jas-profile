@@ -42,7 +42,7 @@ alias c='cd -P'
 
 alias rmd='rmdir'
 alias md='mkdir -p'
-alias untar='tar -zxf'
+alias untar='tar -xf'
 
 alias s='screen'
 alias sl='screen -ls'
