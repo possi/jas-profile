@@ -49,8 +49,8 @@ bindkey "[1;3C" forward-word   # Alt-Right
 # putty, dev.point-rouge.de
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
-bindkey "^[[D" backward-word # ctrl?
-bindkey "^[[C" forward-word
+#bindkey "^[[D" backward-word # ctrl?
+#bindkey "^[[C" forward-word
 bindkey "^[^[OD" backward-word # test?
 bindkey "^[^[OC" forward-word
 
