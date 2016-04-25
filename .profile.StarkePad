@@ -1,4 +1,6 @@
+export ANSICON="cygwin"
 alias xphp="/cygdrive/c/xampp/php/php.exe"
+alias gem="LC_CTYPE=C.BINARY gem"
 export PATH="$PATH:/opt/ffmpeg/bin/:/opt/nmap/"
-export DISPLAY=localhost:0.0
+export DISPLAY=:0.0
 #export LC_CTYPE=C.BINARY

@@ -12,7 +12,12 @@ case "$TERM" in
 esac
 
 export HISTSIZE=2000
-export LANGUAGE="en_US.utf8 en_US.UTF-8 en_US C"
+for l in en_US.utf8 en_US.UTF-8 en_US C; do
+    if (locale -a | grep "^${l}$" > /dev/null); then
+        export LANGUAGE="$l"
+        break
+    fi
+done
 if [ "$LC_ALL" = "" ]; then
     if (locale -a | grep C.UTF-8 > /dev/null); then
         export LC_ALL="C.UTF-8"
@@ -42,7 +47,7 @@ alias c='cd -P'
 
 alias rmd='rmdir'
 alias md='mkdir -p'
-alias untar='tar -zxf'
+alias untar='tar -xf'
 
 alias s='screen'
 alias sl='screen -ls'

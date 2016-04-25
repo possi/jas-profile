@@ -5,6 +5,7 @@ function prompt_char {
 local ret_status="%(?::%{$fg_bold[red]%}[%?] )"
 PROMPT='%(!..%{$fg_bold[green]%}%n%{$fg_bold[cyan]%}@)%{$fg_bold[cyan]%}%m %{$fg_bold[blue]%}%~ ${ret_status}%_$(prompt_char)%{$reset_color%} '
 
+setopt HIST_IGNORE_SPACE
 #ZSH_THEME_GIT_PROMPT_PREFIX="("
 #ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 
@@ -48,8 +49,8 @@ bindkey "[1;3C" forward-word   # Alt-Right
 # putty, dev.point-rouge.de
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
-bindkey "^[[D" backward-word # ctrl?
-bindkey "^[[C" forward-word
+#bindkey "^[[D" backward-word # ctrl?
+#bindkey "^[[C" forward-word
 bindkey "^[^[OD" backward-word # test?
 bindkey "^[^[OC" forward-word
 
