@@ -53,7 +53,8 @@ alias s='screen'
 alias sl='screen -ls'
 alias sr='screen -r'
 
-alias dus='du -h -s *'
+#alias dus='du -h -s *'
+alias dus='du -h -a -d 1 | sort --human-numeric-sort'
 alias du.='du -h -s `pwd -P`'
 alias du='du -h'
 alias df='df -h'
@@ -70,6 +71,9 @@ alias defchmod644='chmod -R 644 . && find . -type d -exec chmod a+x {} \;'
 
 alias wget="wget --trust-server-names"
 alias vi='vim'
+
+alias gvs="find -type d -name '.git' -exec sh -c '(echo {} && cd {}/.. && git status -s && echo)' \\;"
+
 export EDITOR='/usr/bin/vim'
 
 if [ ! -z "$WINDIR" ]; then
