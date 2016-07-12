@@ -48,6 +48,9 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git git-flow sudo redis-cli screen symfony2)
 
 # User configuration
+if [ -e $HOME/.config/jas-profile/.zshrc.local ]; then
+    source $HOME/.config/jas-profile/.zshrc.local;
+fi
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
