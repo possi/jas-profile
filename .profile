@@ -94,6 +94,13 @@ else
     #s="$(basename $SHELL)"
     s="$0"
 fi
+if [ "-" == "${s:0:1}" ]; then
+    s="${s:1}"
+fi
+if [ "su" == "$s" ]; then
+    s="bash"
+fi
+
 test -f ${d}/.profile.${h} && . ${d}/.profile.${h}
 test -f ${d}/.profile.${s} && . ${d}/.profile.${s}
 test -f ${d}/.profile.${h}.${s} && . ${d}/.profile.${h}.${s}

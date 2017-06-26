@@ -18,11 +18,11 @@ download () {
     if [ "$2" != "" ]; then
         tfile=$2
     fi
-    if [ "$(which curl)" != "" ]; then
+    if [ "$(which curl 2>/dev/null)" != "" ]; then
         curl -s -S -k ${SOURCE_REP}${1} > ${tfile}
-    elif [ "$(which wget)" != "" ]; then
+    elif [ "$(which wget 2>/dev/null)" != "" ]; then
         wget -q --no-check-certificate -O ${tfile} ${SOURCE_REP}${1}
-    elif [ "$(which lynx)" != "" ]; then
+    elif [ "$(which lynx 2>/dev/null)" != "" ]; then
         lynx -source ${SOURCE_REP}${1} > ${tfile} 
     else
         echo "No curl or wget or lynx to download files found."
@@ -100,11 +100,17 @@ function install_file_link() {
 
 # Helper
 function update_symlinks {
-    install_file_link .vim
-    install_file_link .vimrc
-    install_file_link .screenrc
+    if [ "$(which vim 2>/dev/null)" != "" ]; then
+        install_file_link .vim
+        install_file_link .vimrc
+    elif [ "$(which vi 2>/dev/null)" != "" ]; then
+        install_file_link .vimrc .vimrc-lite
+    fi
+    if [ "$(which screen 2>/dev/null)" != "" ]; then
+        install_file_link .screenrc
+    fi
     install_file_link .inputrc $(merge_inputrc)
-    if [ "$(which zsh)" != "" ]; then
+    if [ "$(which zsh 2>/dev/null)" != "" ]; then
         install_file_link .zshrc
     fi
 }
@@ -169,7 +175,7 @@ function install {
     git_submodule_install
     update_symlinks
     modify_profile
-    if [ "$(which startx)" != "" ]; then
+    if [ "$(which startx 2>/dev/null)" != "" ]; then
         modify_xprofile
     fi
     include_gitconfig
@@ -182,15 +188,17 @@ function update {
     git_submodule_install
     update_symlinks
     modify_profile
-    if [ "$(which zsh)" != "" ]; then
+    if [ "$(which zsh 2>/dev/null)" != "" ]; then
         modify_xprofile
     fi
     include_gitconfig
-    update_vim
+    if [ "$(which vim 2>/dev/null)" != "" ]; then
+        update_vim
+    fi
 }
 
 if [ ! -d "${HOME}" ]; then
-    echo "Serious error: Home-Direcotry (${HOME}) not found."
+    echo "Serious error: Home-Directory (${HOME}) not found."
     exit 1
 fi
 
@@ -204,7 +212,7 @@ case "$1" in
     *)
         if [ "bash" = "$0" ]; then
             # Quick-Setup
-            if [ "$(which git)" = "" ]; then
+            if [ "$(which git 2>/dev/null)" = "" ]; then
                 echo "Quick-Setup failed, git client ist not installed"
                 exit 1
             fi
