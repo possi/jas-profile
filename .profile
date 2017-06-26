@@ -70,13 +70,12 @@ alias defchmod664='chmod -R 664 . && find . -type d -exec chmod a+x {} \;'
 alias defchmod644='chmod -R 644 . && find . -type d -exec chmod a+x {} \;'
 
 alias wget="wget --trust-server-names"
-if [ "$(which vim 2>/dev/null)" != ""]; then
+if [ "$(which vim 2>/dev/null)" != "" ]; then
     alias vi='vim'
+    export EDITOR='/usr/bin/vim'
 fi
 
 alias gvs="find -type d -name '.git' -exec sh -c '(echo {} && cd {}/.. && git status -s && echo)' \\;"
-
-export EDITOR='/usr/bin/vim'
 
 if [ ! -z "$WINDIR" ]; then
     alias explorer-here='if [ -z "$1" ]; then explorer.exe /e,`cygpath -w "$PWD"`; else explorer.exe /e,`cygpath -w "$1"`; fi; true'
@@ -96,10 +95,10 @@ else
     #s="$(basename $SHELL)"
     s="$0"
 fi
-if [ "-" == "${s:0:1}" ]; then
+if [ "-" = "${s:0:1}" ]; then
     s="${s:1}"
 fi
-if [ "su" == "$s" ]; then
+if [ "su" = "$s" ]; then
     s="bash"
 fi
 
