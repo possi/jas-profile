@@ -70,7 +70,9 @@ alias defchmod664='chmod -R 664 . && find . -type d -exec chmod a+x {} \;'
 alias defchmod644='chmod -R 644 . && find . -type d -exec chmod a+x {} \;'
 
 alias wget="wget --trust-server-names"
-alias vi='vim'
+if [ "$(which vim 2>/dev/null)" != ""]; then
+    alias vi='vim'
+fi
 
 alias gvs="find -type d -name '.git' -exec sh -c '(echo {} && cd {}/.. && git status -s && echo)' \\;"
 
