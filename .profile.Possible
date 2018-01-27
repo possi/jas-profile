@@ -1,3 +1,5 @@
+. $HOME/.config/jas-profile/.wsl_profile
+
 alias rm='rm -i'
 alias apt-get='apt-cyg -u'
 export PATH=$PATH:/cygdrive/d/shell/apache-maven/bin
@@ -6,6 +8,9 @@ export PATH="${PATH}:/usr/local/bin/nmap:${JAVA_HOME}/bin"
 export nodosfilewarning='1'
 alias modman="php d:/Zend/Apache2/htdocs/modman-php/modman.php"
 export DISPLAY=:0.0
+export DOCKER_HOST="tcp://127.0.0.1:2375"
+
+export SYMFONY_ASSETS_INSTALL="symlink" # Hard Symlinks
 
 #export ANDROID_HOME="d:/Programme/android-sdk"
 #export PATH="$PATH:/cygdrive/d/Programme/android-sdk/build-tools/18.0.1"

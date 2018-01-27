@@ -77,6 +77,12 @@ fi
 
 alias gvs="find -type d -name '.git' -exec sh -c '(echo {} && cd {}/.. && git status -s && echo)' \\;"
 
+export EDITOR='/usr/bin/vim'
+export GIT_AUTHOR_NAME="Jascha Starke"
+export GIT_COMMITTER_NAME="Jascha Starke"
+export GIT_AUTHOR_EMAIL="j.starke@meeva.de"
+export GIT_COMMITTER_EMAIL="j.starke@meeva.de"
+
 if [ ! -z "$WINDIR" ]; then
     alias explorer-here='if [ -z "$1" ]; then explorer.exe /e,`cygpath -w "$PWD"`; else explorer.exe /e,`cygpath -w "$1"`; fi; true'
 fi
