@@ -54,3 +54,9 @@ Update all dependencies:
 ```bash
 git submodule -q foreach git pull -u origin master
 ```
+
+References:
+-----------
+
+* [leyrer](https://github.com/leyrer/linux-home) - advanced tmux config ([thx EH18](https://www.youtube.com/watch?v=uxpUeieWHD8))
+  *I'm not only person to use bash profiles in a git repo*

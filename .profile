@@ -53,6 +53,12 @@ alias s='screen'
 alias sl='screen -ls'
 alias sr='screen -r'
 
+alias t='tmux'
+alias ta='tmux attach'
+alias tl='tmux ls'
+
+alias _colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
+
 #alias dus='du -h -s *'
 alias dus='du -h -a -d 1 | sort --human-numeric-sort'
 alias du.='du -h -s `pwd -P`'

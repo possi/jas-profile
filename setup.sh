@@ -57,13 +57,13 @@ download () {
 
 install_fzf() {
     if [ -e $TOOLS_PATH/fzf ]; then
-        pushd $TMP_PATH/fzf >/dev/null
+        pushd $TOOLS_PATH/fzf >/dev/null
         git pull
         popd >/dev/null
     else
-        git clone --depth 1 https://github.com/junegunn/fzf.git $TMP_PATH/fzf
+        git clone --depth 1 https://github.com/junegunn/fzf.git $TOOLS_PATH/fzf
     fi
-    $TMP_PATH/fzf/install --all --key-bindings --completion --no-update-rc
+    $TOOLS_PATH/fzf/install --all --key-bindings --completion --no-update-rc
 }
 
 
@@ -127,6 +127,9 @@ function update_symlinks {
     fi
     if [ "$(which screen 2>/dev/null)" != "" ]; then
         install_file_link .screenrc
+    fi
+    if [ "$(which tmux 2>/dev/null)" != "" ]; then
+        install_file_link .tmux.conf
     fi
     # install_file_link .bashrc
     install_file_link .inputrc $(merge_inputrc)

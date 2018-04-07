@@ -83,5 +83,18 @@ source $ZSH/../.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+if [ "/bin/bash" = "$SHELL" ]; then
+    export SHELL=`which zsh`
+fi
+
+## Startup-Time DEBUG
+#zmodload zsh/zprof
+#PS4='+ $(date "+%s.%N")\\011 '
+#set -x
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $HOME/.config/jas-profile/.profile zsh
+
+## Startup-Time DEBUG
+#set +x
+#zprof
