@@ -1,6 +1,8 @@
 #!/bin/bash
 _TARGET_PATH=".config/jas-profile"
 TARGET_DIR="${HOME}/${_TARGET_PATH}"
+TMP_PATH="${TARGET_DIR}/.tmp"
+TOOLS_PATH="${TARGET_DIR}/.tmp"
 LINK_TARGET_DIR="${_TARGET_PATH}"
 REPOSITORY="https://github.com/possi/jas-profile.git"
 PROFILE_SRC="# jas-profile
@@ -47,6 +49,23 @@ download () {
 #     echo "#jas" >> .profile
 #     echo "test -f ~/.jas_profile && . ~/.jas_profile" >> .profile
 # fi
+
+
+#### Dependencies
+
+# fzf
+
+install_fzf() {
+    if [ -e $TOOLS_PATH/fzf ]; then
+        pushd $TMP_PATH/fzf >/dev/null
+        git pull
+        popd >/dev/null
+    else
+        git clone --depth 1 https://github.com/junegunn/fzf.git $TMP_PATH/fzf
+    fi
+    $TMP_PATH/fzf/install --all --key-bindings --completion --no-update-rc
+}
+
 
 function hr {
   sed '
@@ -109,6 +128,7 @@ function update_symlinks {
     if [ "$(which screen 2>/dev/null)" != "" ]; then
         install_file_link .screenrc
     fi
+    # install_file_link .bashrc
     install_file_link .inputrc $(merge_inputrc)
     if [ "$(which zsh 2>/dev/null)" != "" ]; then
         install_file_link .zshrc
@@ -168,10 +188,12 @@ function include_gitconfig() {
         echo "incuding .gitconfig"
     fi
 }
+function install_dependencies() {
+    install_fzf
+}
 
 
-# Main-Commands
-function install {
+execute_install() {
     git_submodule_install
     update_symlinks
     modify_profile
@@ -179,22 +201,22 @@ function install {
         modify_xprofile
     fi
     include_gitconfig
-    update_vim
+    if [ "$(which vim 2>/dev/null)" != "" ]; then
+        update_vim
+    fi
+    install_dependencies
+}
+
+# Main-Commands
+function install {
+    execute_install
 }
 function update {
     pushd "${TARGET_DIR}" >/dev/null
     git pull
     popd >/dev/null
-    git_submodule_install
-    update_symlinks
-    modify_profile
-    if [ "$(which zsh 2>/dev/null)" != "" ]; then
-        modify_xprofile
-    fi
-    include_gitconfig
-    if [ "$(which vim 2>/dev/null)" != "" ]; then
-        update_vim
-    fi
+
+    execute_install
 }
 
 if [ ! -d "${HOME}" ]; then
