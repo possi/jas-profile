@@ -55,7 +55,7 @@ Internals:
 
 Update all dependencies:
 ```bash
-git submodule -q foreach git pull -u origin master
+git submodule -q foreach git pull origin master
 ```
 
 References:
