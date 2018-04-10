@@ -54,7 +54,7 @@ alias sl='screen -ls'
 alias sr='screen -r'
 
 #alias dus='du -h -s *'
-alias dus='du -h -a -d 1 | sort --human-numeric-sort'
+alias dus='du -h -a -x -d 1 | sort --human-numeric-sort'
 alias du.='du -h -s `pwd -P`'
 alias du='du -h'
 alias df='df -h'
