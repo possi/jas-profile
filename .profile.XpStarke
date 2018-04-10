@@ -3,4 +3,6 @@ alias xphp="/cygdrive/c/xampp/php/php.exe"
 alias gem="LC_CTYPE=C.BINARY gem"
 export PATH="$PATH:/opt/ffmpeg/bin/:/opt/nmap/"
 export DISPLAY=:0.0
+export SYMFONY_ASSETS_INSTALL="symlink"
+export DOCKER_HOST="tcp://127.0.0.1:2375"
 #export LC_CTYPE=C.BINARY

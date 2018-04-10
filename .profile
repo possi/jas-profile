@@ -53,6 +53,12 @@ alias s='screen'
 alias sl='screen -ls'
 alias sr='screen -r'
 
+alias t='tmux'
+alias ta='tmux attach'
+alias tl='tmux ls'
+
+alias _colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
+
 #alias dus='du -h -s *'
 alias dus='du -h -a -x -d 1 | sort --human-numeric-sort'
 alias du.='du -h -s `pwd -P`'
@@ -70,11 +76,18 @@ alias defchmod664='chmod -R 664 . && find . -type d -exec chmod a+x {} \;'
 alias defchmod644='chmod -R 644 . && find . -type d -exec chmod a+x {} \;'
 
 alias wget="wget --trust-server-names"
-alias vi='vim'
+if [ "$(which vim 2>/dev/null)" != "" ]; then
+    alias vi='vim'
+    export EDITOR='/usr/bin/vim'
+fi
 
 alias gvs="find -type d -name '.git' -exec sh -c '(echo {} && cd {}/.. && git status -s && echo)' \\;"
 
 export EDITOR='/usr/bin/vim'
+export GIT_AUTHOR_NAME="Jascha Starke"
+export GIT_COMMITTER_NAME="Jascha Starke"
+export GIT_AUTHOR_EMAIL="j.starke@meeva.de"
+export GIT_COMMITTER_EMAIL="j.starke@meeva.de"
 
 if [ ! -z "$WINDIR" ]; then
     alias explorer-here='if [ -z "$1" ]; then explorer.exe /e,`cygpath -w "$PWD"`; else explorer.exe /e,`cygpath -w "$1"`; fi; true'
@@ -94,6 +107,13 @@ else
     #s="$(basename $SHELL)"
     s="$0"
 fi
+if [ "-" = "${s:0:1}" ]; then
+    s="${s:1}"
+fi
+if [ "su" = "$s" ]; then
+    s="bash"
+fi
+
 test -f ${d}/.profile.${h} && . ${d}/.profile.${h}
 test -f ${d}/.profile.${s} && . ${d}/.profile.${s}
 test -f ${d}/.profile.${h}.${s} && . ${d}/.profile.${h}.${s}

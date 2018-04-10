@@ -1,6 +1,8 @@
 #!/bin/bash
 _TARGET_PATH=".config/jas-profile"
 TARGET_DIR="${HOME}/${_TARGET_PATH}"
+TMP_PATH="${TARGET_DIR}/.tmp"
+TOOLS_PATH="${TARGET_DIR}/.tmp"
 LINK_TARGET_DIR="${_TARGET_PATH}"
 REPOSITORY="https://github.com/possi/jas-profile.git"
 PROFILE_SRC="# jas-profile
@@ -18,11 +20,11 @@ download () {
     if [ "$2" != "" ]; then
         tfile=$2
     fi
-    if [ "$(which curl)" != "" ]; then
+    if [ "$(which curl 2>/dev/null)" != "" ]; then
         curl -s -S -k ${SOURCE_REP}${1} > ${tfile}
-    elif [ "$(which wget)" != "" ]; then
+    elif [ "$(which wget 2>/dev/null)" != "" ]; then
         wget -q --no-check-certificate -O ${tfile} ${SOURCE_REP}${1}
-    elif [ "$(which lynx)" != "" ]; then
+    elif [ "$(which lynx 2>/dev/null)" != "" ]; then
         lynx -source ${SOURCE_REP}${1} > ${tfile} 
     else
         echo "No curl or wget or lynx to download files found."
@@ -47,6 +49,23 @@ download () {
 #     echo "#jas" >> .profile
 #     echo "test -f ~/.jas_profile && . ~/.jas_profile" >> .profile
 # fi
+
+
+#### Dependencies
+
+# fzf
+
+install_fzf() {
+    if [ -e $TOOLS_PATH/fzf ]; then
+        pushd $TOOLS_PATH/fzf >/dev/null
+        git pull
+        popd >/dev/null
+    else
+        git clone --depth 1 https://github.com/junegunn/fzf.git $TOOLS_PATH/fzf
+    fi
+    $TOOLS_PATH/fzf/install --all --key-bindings --completion --no-update-rc
+}
+
 
 function hr {
   sed '
@@ -100,11 +119,21 @@ function install_file_link() {
 
 # Helper
 function update_symlinks {
-    install_file_link .vim
-    install_file_link .vimrc
-    install_file_link .screenrc
+    if [ "$(which vim 2>/dev/null)" != "" ]; then
+        install_file_link .vim
+        install_file_link .vimrc
+    elif [ "$(which vi 2>/dev/null)" != "" ]; then
+        install_file_link .vimrc .vimrc-lite
+    fi
+    if [ "$(which screen 2>/dev/null)" != "" ]; then
+        install_file_link .screenrc
+    fi
+    if [ "$(which tmux 2>/dev/null)" != "" ]; then
+        install_file_link .tmux.conf
+    fi
+    # install_file_link .bashrc
     install_file_link .inputrc $(merge_inputrc)
-    if [ "$(which zsh)" != "" ]; then
+    if [ "$(which zsh 2>/dev/null)" != "" ]; then
         install_file_link .zshrc
     fi
 }
@@ -162,35 +191,39 @@ function include_gitconfig() {
         echo "incuding .gitconfig"
     fi
 }
+function install_dependencies() {
+    install_fzf
+}
 
 
-# Main-Commands
-function install {
+execute_install() {
     git_submodule_install
     update_symlinks
     modify_profile
-    if [ "$(which startx)" != "" ]; then
+    if [ "$(which startx 2>/dev/null)" != "" ]; then
         modify_xprofile
     fi
     include_gitconfig
-    update_vim
+    if [ "$(which vim 2>/dev/null)" != "" ]; then
+        update_vim
+    fi
+    install_dependencies
+}
+
+# Main-Commands
+function install {
+    execute_install
 }
 function update {
     pushd "${TARGET_DIR}" >/dev/null
     git pull
     popd >/dev/null
-    git_submodule_install
-    update_symlinks
-    modify_profile
-    if [ "$(which zsh)" != "" ]; then
-        modify_xprofile
-    fi
-    include_gitconfig
-    update_vim
+
+    execute_install
 }
 
 if [ ! -d "${HOME}" ]; then
-    echo "Serious error: Home-Direcotry (${HOME}) not found."
+    echo "Serious error: Home-Directory (${HOME}) not found."
     exit 1
 fi
 
@@ -204,7 +237,7 @@ case "$1" in
     *)
         if [ "bash" = "$0" ]; then
             # Quick-Setup
-            if [ "$(which git)" = "" ]; then
+            if [ "$(which git 2>/dev/null)" = "" ]; then
                 echo "Quick-Setup failed, git client ist not installed"
                 exit 1
             fi

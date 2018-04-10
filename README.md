@@ -19,7 +19,7 @@ wget -O - https://raw.githubusercontent.com/possi/jas-profile/master/setup.sh | 
 lnyx -source https://raw.githubusercontent.com/possi/jas-profile/master/setup.sh | bash;
 ```
 
-Recommended cygwin enhancements
+Recommended cygwin enhancements (deprecated)
 -------------------------------
 * [apt-cyg](https://github.com/transcode-open/apt-cyg)
 * [OH MY CYGWIN](https://github.com/haithembelhaj/oh-my-cygwin)
@@ -41,6 +41,9 @@ Recommended cygwin enhancements
   ```
 
 
+### Replaced by
+[Mintty for WSL](https://github.com/mintty/wsltty)
+
 My Defaults
 -----------
 * Cygwin-Font: Consola with PowerLine ([consola.ttf](https://github.com/nicolalamacchia/powerline-consolas))
@@ -52,5 +55,11 @@ Internals:
 
 Update all dependencies:
 ```bash
-git submodule -q foreach git pull -u origin master
+git submodule -q foreach git pull origin master
 ```
+
+References:
+-----------
+
+* [leyrer](https://github.com/leyrer/linux-home) - advanced tmux config ([thx EH18](https://www.youtube.com/watch?v=uxpUeieWHD8))  
+  *I'm not only person to use bash profiles in a git repo*

@@ -3,3 +3,5 @@
 .inputrc.merged
 .vim/.netrwhist
 .vim/bundle/*
+.tmp
+/tools
