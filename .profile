@@ -44,6 +44,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias cd..='cd ..'
 alias c='cd -P'
+alias h='cd -P ~/home' # Symlink to Windows-Home-Dir
 
 alias rmd='rmdir'
 alias md='mkdir -p'
@@ -88,6 +89,7 @@ export GIT_AUTHOR_NAME="Jascha Starke"
 export GIT_COMMITTER_NAME="Jascha Starke"
 export GIT_AUTHOR_EMAIL="j.starke@meeva.de"
 export GIT_COMMITTER_EMAIL="j.starke@meeva.de"
+export COMPOSER_MEMORY_LIMIT=-1
 
 if [ ! -z "$WINDIR" ]; then
     alias explorer-here='if [ -z "$1" ]; then explorer.exe /e,`cygpath -w "$PWD"`; else explorer.exe /e,`cygpath -w "$1"`; fi; true'
