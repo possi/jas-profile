@@ -58,6 +58,10 @@ Update all dependencies:
 git submodule -q foreach git pull origin master
 ```
 
+WSL Workarounds
+---------------
+* SSH-Agent on Ubuntu 18.04: https://github.com/Microsoft/WSL/issues/3183#issuecomment-411138426
+
 References:
 -----------
 
