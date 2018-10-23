@@ -1,1 +1,2 @@
 alias start='cmd.exe /c start'
+unset APPDATA

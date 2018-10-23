@@ -1,3 +1,5 @@
+. $HOME/.config/jas-profile/.wsl_profile
+
 export ANSICON="cygwin"
 alias xphp="/cygdrive/c/xampp/php/php.exe"
 alias gem="LC_CTYPE=C.BINARY gem"
