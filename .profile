@@ -84,6 +84,9 @@ fi
 
 alias gvs="find -type d -name '.git' -exec sh -c '(echo {} && cd {}/.. && git status -s && echo)' \\;"
 
+# Pseudo-Path
+alias vimcat="$HOME/.vim/bundle/vimpager/vimcat"
+
 export EDITOR='/usr/bin/vim'
 export GIT_AUTHOR_NAME="Jascha Starke"
 export GIT_COMMITTER_NAME="Jascha Starke"

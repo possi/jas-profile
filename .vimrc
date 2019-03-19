@@ -26,6 +26,8 @@ Plugin 'vim-scripts/AfterColors.vim' " Farbschema-Customizing
 "Plugin 'sickill/vim-monokai' " Monokai Farbschema
 "Plugin 'ajh17/Spacegray.vim' " Tottis Farbschema
 
+Plugin 'rkitover/vimpager'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required

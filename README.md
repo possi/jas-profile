@@ -47,6 +47,9 @@ Recommended cygwin enhancements (deprecated)
 My Defaults
 -----------
 * Cygwin-Font: Consola with PowerLine ([consola.ttf](https://github.com/nicolalamacchia/powerline-consolas))
+  * Alternativ alle Powerline-Fonts:  
+    git clone https://github.com/powerline/fonts.git
+    (Admin) powershell.exe -ExecutionPolicy Bypass .\install.ps1
 * Ubuntu-Font: [DejaVu Sans Mono for Powerline](https://github.com/powerline/fonts)
 * Terminal-Size: 144 x 48
 
@@ -60,8 +63,21 @@ git submodule -q foreach git pull origin master
 
 WSL Workarounds
 ---------------
-* SSH-Agent on Ubuntu 18.04: https://github.com/Microsoft/WSL/issues/3183#issuecomment-411138426
 * Disable LC_ALL-Warning on SSH: Modify /etc/ssh/ssh_config and remove `SendEnv LANG LC_*`
+* Mount /mnt/c, etc with metadata but not with case sensitive  
+  `/etc/wsl.conf`
+    ```ini
+    # https://blogs.msdn.microsoft.com/commandline/2018/02/07/automatically-configuring-wsl/
+    #
+    [automount]
+    enabled = true
+    # root = /mnt/
+    options = "metadata"
+    case = off
+    # mountFsTab = true
+    ```
+  Source: https://devblogs.microsoft.com/commandline/per-directory-case-sensitivity-and-wsl/  
+  Reason: https://github.com/yarnpkg/yarn/issues/5813
 
 References:
 -----------
