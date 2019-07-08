@@ -82,10 +82,41 @@ function usage {
     Commands:
         install-cloned      Installs the already cloned profile
         update              Ensures that everything ist up-to-date
+        zsh [bashrc]        Enables ZSH as default shell (Optional using bashrc, if user has no password)
     '
 }
 
 bcd="${TARGET_DIR}/.bck/$(date +%y%m%d%H%M%S)"
+function setup_zsh {
+    if [ "$(which zsh &2>/dev/null)" = "" ]; then
+        echo "ZSH isn't installed."
+        exit 1
+    fi
+    if [ "$1" != "bashrc" ]; then
+        echo "> chsh -s $(which zsh)"
+        chsh -s $(which zsh)
+    else
+        CONTENT='
+# jas-profile launch ZSH
+if [ ! -z "$PS1" ]; then
+  zsh --login
+  exit
+fi
+'
+
+        if [ ! -e "${HOME}/.bashrc" ]; then
+            echo "# Creating .bashrc"
+            echo "$CONTENT" > $HOME/.bashrc
+        elif ! grep -q "# jas-profile" "${HOME}/.bashrc"; then
+            echo "# Prepending .basrc"
+            mkdir -p "${bcd}"
+            cp "$HOME/.bashrc" "${bcd}/.bashrc"
+            echo "$CONTENT" | cat - $HOME/.bashrc > $HOME/.temp_bashrc && mv $HOME/.temp_bashrc $HOME/.bashrc
+        else
+            echo "# Skipping already patched .bashrc"
+        fi
+    fi
+}
 function install_file_link() {
     f="${HOME}/${1}"
     if [ "" != "${2}" ]; then
@@ -233,6 +264,9 @@ case "$1" in
     ;;
     update)
         update
+    ;;
+    zsh)
+        setup_zsh $2
     ;;
     *)
         if [ "bash" = "$0" ]; then
