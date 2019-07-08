@@ -79,15 +79,16 @@ alias defchmod644='chmod -R 644 . && find . -type d -exec chmod a+x {} \;'
 alias wget="wget --trust-server-names"
 if [ "$(which vim 2>/dev/null)" != "" ]; then
     alias vi='vim'
-    export EDITOR='/usr/bin/vim'
+    export EDITOR="$(which vim)"
+
+    # Pseudo-Path
+    alias vimcat="$HOME/.vim/bundle/vimpager/vimcat"
+elif [ "$(which vi 2>/dev/null)" != "" ]; then
+    export EDITOR="$(which vi)"
 fi
 
 alias gvs="find -type d -name '.git' -exec sh -c '(echo {} && cd {}/.. && git status -s && echo)' \\;"
 
-# Pseudo-Path
-alias vimcat="$HOME/.vim/bundle/vimpager/vimcat"
-
-export EDITOR='/usr/bin/vim'
 export GIT_AUTHOR_NAME="Jascha Starke"
 export GIT_COMMITTER_NAME="Jascha Starke"
 export GIT_AUTHOR_EMAIL="j.starke@meeva.de"
