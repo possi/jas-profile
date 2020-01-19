@@ -50,6 +50,7 @@ My Defaults
   * Alternativ alle Powerline-Fonts:  
     git clone https://github.com/powerline/fonts.git
     (Admin) powershell.exe -ExecutionPolicy Bypass .\install.ps1
+  * https://github.com/Znuff/consolas-powerline
 * Ubuntu-Font: [DejaVu Sans Mono for Powerline](https://github.com/powerline/fonts)
 * Terminal-Size: 144 x 48
 
