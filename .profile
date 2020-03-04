@@ -123,4 +123,5 @@ fi
 test -f ${d}/.profile.${h} && . ${d}/.profile.${h}
 test -f ${d}/.profile.${s} && . ${d}/.profile.${s}
 test -f ${d}/.profile.${h}.${s} && . ${d}/.profile.${h}.${s}
+test "vagrant" = "$USER" && . ${d}/.vagrant_profile
 true

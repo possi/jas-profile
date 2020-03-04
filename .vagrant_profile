@@ -1,0 +1,6 @@
+if [ -f "/vagrant/.dev-environment/docker/docker-compose.yml" ]; then
+    alias docker-compose="sudo -E docker-compose -f /vagrant/.dev-environment/docker/docker-compose.yml"
+fi
+if [ -d "/var/www" ]; then
+    cd /var/www
+fi
