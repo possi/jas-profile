@@ -88,6 +88,7 @@ elif [ "$(which vi 2>/dev/null)" != "" ]; then
 fi
 
 alias gvs="find -type d -name '.git' -exec sh -c '(echo {} && cd {}/.. && git status -s && echo)' \\;"
+alias git-clean-f='git status -su | grep "??" | awk {"print \$2"} | xargs rm'
 
 export GIT_AUTHOR_NAME="Jascha Starke"
 export GIT_COMMITTER_NAME="Jascha Starke"
