@@ -1,5 +1,7 @@
 if [ -f "/vagrant/.dev-environment/docker/docker-compose.yml" ]; then
     alias docker-compose="sudo -E docker-compose -f /vagrant/.dev-environment/docker/docker-compose.yml"
+    # export XDEBUG_CONFIG="idekey=PHPSTORM remote_host=172.28.128.1"
+    # export PHP_IDE_CONFIG="serverName=$(hostname -f)"
 fi
 if [ -d "/var/www" ]; then
     cd /var/www
