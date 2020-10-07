@@ -14,3 +14,4 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 	permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
 	id = diff --word-diff-regex=.
+	rmb = "!f() { git branch --merged | grep -v master | while read i; do git branch -d $i; done; }; f"
