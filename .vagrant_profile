@@ -4,5 +4,8 @@ if [ -f "/vagrant/.dev-environment/docker/docker-compose.yml" ]; then
     # export PHP_IDE_CONFIG="serverName=$(hostname -f)"
 fi
 if [ -d "/var/www" ]; then
-    cd /var/www
+    alias c="cd -P /var/www"
+    if [ -z "$STY" ]; then
+        cd /var/www
+    fi
 fi
