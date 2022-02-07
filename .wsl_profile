@@ -1,2 +1,14 @@
 alias start='cmd.exe /c start'
 unset APPDATA
+if [ ! -z "$USERPROFILE" ]; then
+    alias c=$USERPROFILE
+fi
+cdw () {
+        if test "$#" -eq 0 ; then
+                cd "$USERPROFILE"
+        elif test "$1" = - ; then
+                cd "$1"
+        else
+                cd -- "$(wslpath "$@")"
+        fi
+}

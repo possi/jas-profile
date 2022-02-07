@@ -77,6 +77,7 @@ git submodule -q foreach git pull origin master
 
 WSL Workarounds
 ---------------
+* Use `c` for Windows Home-Directory: cmd: `setx WSLENV USERPROFILE/up`
 * Disable LC_ALL-Warning on SSH: Modify /etc/ssh/ssh_config and remove `SendEnv LANG LC_*`
 * Mount /mnt/c, etc with metadata but not with case sensitive  
   `/etc/wsl.conf`
