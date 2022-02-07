@@ -173,6 +173,11 @@ function git_submodule_install {
     git submodule update -f --init --recursive
     popd >/dev/null
 }
+function fix_permissions {
+    pushd "${TARGET_DIR}" >/dev/null
+    chmod -R go-w .oh-my-zsh
+    popd >/dev/null
+}
 function update_vim {
     echo -n "Updating vim-plugins... "
     vim +PluginInstall +qall 2>/dev/null
@@ -229,6 +234,7 @@ function install_dependencies() {
 
 execute_install() {
     git_submodule_install
+    fix_permissions
     update_symlinks
     modify_profile
     if [ "$(which startx 2>/dev/null)" != "" ]; then

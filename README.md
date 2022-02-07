@@ -6,6 +6,11 @@ My Shell und vim Profiles with automatic installation
 Setup
 -----
 
+Optional recommended software before setup:
+```bash
+apt install vim zsh
+```
+
 ```bash
 mkdir -p ~/.config;
 git clone git@github.com:possi/jas-profile.git ~/.config/jas-profile;
@@ -19,33 +24,15 @@ wget -O - https://raw.githubusercontent.com/possi/jas-profile/master/setup.sh | 
 lnyx -source https://raw.githubusercontent.com/possi/jas-profile/master/setup.sh | bash;
 ```
 
-Recommended cygwin enhancements (deprecated)
--------------------------------
-* [apt-cyg](https://github.com/transcode-open/apt-cyg)
-* [OH MY CYGWIN](https://github.com/haithembelhaj/oh-my-cygwin)
-* chere-Package with icon added:
-  ```reg
-  Windows Registry Editor Version 5.00
-  
-  [HKEY_CLASSES_ROOT\Directory\Background]
-  
-  [HKEY_CLASSES_ROOT\Directory\Background\shell]
-  
-  [HKEY_CLASSES_ROOT\Directory\Background\shell\cygwin64_zsh]
-  "Icon"="D:\\cygwin\\Cygwin-Terminal.ico"
-  
-  [HKEY_CLASSES_ROOT\Directory\shell]
-  
-  [HKEY_CLASSES_ROOT\Directory\shell\cygwin64_zsh]
-  "Icon"="D:\\cygwin\\Cygwin-Terminal.ico"
-  ```
+Optional configurations:
+```bash
+chsh -s /usr/bin/zsh
+```
 
-
-### Replaced by
 [Mintty for WSL](https://github.com/mintty/wsltty)
+-------------------------------
 
-My Defaults
------------
+### My Defaults
 * Cygwin-Font: Consola with PowerLine ([consola.ttf](https://github.com/nicolalamacchia/powerline-consolas))
   * Alternativ alle Powerline-Fonts:  
     git clone https://github.com/powerline/fonts.git
