@@ -48,7 +48,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow sudo redis-cli screen symfony2)
+plugins=(git git-flow sudo redis-cli screen symfony2 cp ubuntu yarn vagrant)
 
 # User configuration
 if [ -e $HOME/.config/jas-profile/.zshrc.local ]; then

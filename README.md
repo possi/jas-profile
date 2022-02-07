@@ -53,6 +53,19 @@ My Defaults
   * https://github.com/Znuff/consolas-powerline
 * Ubuntu-Font: [DejaVu Sans Mono for Powerline](https://github.com/powerline/fonts)
 * Terminal-Size: 144 x 48
+* Background... `24,24,24`
+
+`%APPDATA%\wsltty\config`
+```
+BoldAsFont=no
+Font=Consolas NF
+Columns=144
+Rows=48
+Term=xterm-256color
+CursorType=block
+ThemeFile=
+BackgroundColour=24,24,24
+```
 
 Internals:
 ----------
