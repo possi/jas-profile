@@ -8,7 +8,7 @@ Setup
 
 Optional recommended software before setup:
 ```bash
-apt install vim zsh
+apt install vim zsh screen
 ```
 
 ```bash
