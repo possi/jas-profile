@@ -11,6 +11,9 @@ case "$TERM" in
     ;;
 esac
 
+d="$HOME/.config/jas-profile"
+export PATH="$PATH:$d/.bin"
+
 export HISTSIZE=2000
 for l in en_US.utf8 en_US.UTF-8 en_US C; do
     if (locale -a | grep "^${l}$" > /dev/null); then
@@ -27,7 +30,12 @@ if [ "$LANG" = "" ]; then
     export LANG="en_US.UTF-8"
 fi
 
-if [ "$(uname)" = "Darwin" ]; then
+if which exa 2>&1 >/dev/null; then
+    alias tree='exa --tree'
+    alias l='exa -laa'
+    alias ll='exa -la'
+    alias la='exa -lag --icons --git'
+elif [ "$(uname)" = "Darwin" ]; then
     alias ll='ls -l'
     alias l='ls -alh'
 else
@@ -100,8 +108,7 @@ if [ ! -z "$WINDIR" ]; then
     alias explorer-here='if [ -z "$1" ]; then explorer.exe /e,`cygpath -w "$PWD"`; else explorer.exe /e,`cygpath -w "$1"`; fi; true'
 fi
 
-d="$HOME/.config/jas-profile"
-alias jas-profile="$HOME/.config/jas-profile/setup.sh"
+alias jas-profile="$d/setup.sh"
 
 if [ -f "$HOME/.ssh/id_dsa" ] || [ -f "$HOME/.ssh/id_rsa" ]; then
     . ${d}/.ssh_agent

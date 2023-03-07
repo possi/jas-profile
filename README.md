@@ -50,7 +50,8 @@ Columns=144
 Rows=48
 Term=xterm-256color
 CursorType=block
-ThemeFile=
+ThemeFile=jas-profile
+# File jas-profile.minttyrc should be copied to %APPDATA%\wsltty\themes
 BackgroundColour=24,24,24
 ```
 

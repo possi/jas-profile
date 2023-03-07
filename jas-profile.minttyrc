@@ -1,0 +1,37 @@
+# config.c
+
+# mintty Original
+#Black       = #000000
+#Red         = #BF0000
+#Green       = #00BF00
+#Yellow      = #BFBF00
+#Blue        = #0000BF
+#Magenta     = #BF00BF
+#Cyan        = #00BFBF
+#White       = #BFBFBF
+#BoldBlack   = #404040
+#BoldRed     = #FF4040
+#BoldGreen   = #40FF40
+#BoldYellow  = #FFFF40
+#BoldBlue    = #6060FF
+#BoldMagenta = #FF40FF
+BoldCyan    = #40FFFF
+#BoldWhite   = #FFFFFF
+
+# Exa
+Black       = #000000
+Red         = #D62C1A
+Green       = #25A25A
+Yellow      = #C29D0B
+Blue        = #217DBB
+Magenta     = #804399
+Cyan        = #14888F
+White       = #DDDDDD
+BoldBlack   = #404040
+BoldRed     = #E74C3C
+BoldGreen   = #2ECC71
+BoldYellow  = #F1C40F
+BoldBlue    = #3498DB
+BoldMagenta = #9B59B6
+#BoldCyan    = #1AB2BC
+BoldWhite   = #FFFFFF

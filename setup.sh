@@ -3,6 +3,7 @@ _TARGET_PATH=".config/jas-profile"
 TARGET_DIR="${HOME}/${_TARGET_PATH}"
 TMP_PATH="${TARGET_DIR}/.tmp"
 TOOLS_PATH="${TARGET_DIR}/.tmp"
+BIN_PATH="${TARGET_DIR}/.bin"
 LINK_TARGET_DIR="${_TARGET_PATH}"
 REPOSITORY="https://github.com/possi/jas-profile.git"
 PROFILE_SRC="# jas-profile
@@ -66,6 +67,18 @@ install_fzf() {
     $TOOLS_PATH/fzf/install --all --key-bindings --completion --no-update-rc
 }
 
+install_exa() {
+    RELEASE=https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip
+    ZIP=$(basename $RELEASE)
+    pushd $TMP_PATH >/dev/null
+    mkdir -p $TOOLS_PATH/exa
+    wget $RELEASE
+    unzip $ZIP -d $TOOLS_PATH/exa
+    ln -s $TOOLS_PATH/exa/bin/exa $BIN_PATH/
+    rm $ZIP
+    popd >/dev/null
+}
+
 
 function hr {
   sed '
@@ -83,6 +96,7 @@ function usage {
         install-cloned      Installs the already cloned profile
         update              Ensures that everything ist up-to-date
         zsh [bashrc]        Enables ZSH as default shell (Optional using bashrc, if user has no password)
+        extras-install      Installs Extra Binaries: exa
     '
 }
 
@@ -168,6 +182,11 @@ function update_symlinks {
         install_file_link .zshrc
     fi
 }
+function copy_defaults {
+    if [ -d "$USERPROFILE/AppData/Roaming/wsltty/themes" ]; then
+        cp $TARGET_DIR/jas-profile.minttyrc "$USERPROFILE/AppData/Roaming/wsltty/themes/jas-profile"
+    fi
+}
 function git_submodule_install {
     pushd "${TARGET_DIR}" >/dev/null
     git submodule update -f --init --recursive
@@ -236,6 +255,7 @@ execute_install() {
     git_submodule_install
     fix_permissions
     update_symlinks
+    copy_defaults
     modify_profile
     if [ "$(which startx 2>/dev/null)" != "" ]; then
         modify_xprofile
@@ -258,6 +278,9 @@ function update {
 
     execute_install
 }
+function extras {
+    install_exa
+}
 
 if [ ! -d "${HOME}" ]; then
     echo "Serious error: Home-Directory (${HOME}) not found."
@@ -273,6 +296,9 @@ case "$1" in
     ;;
     zsh)
         setup_zsh $2
+    ;;
+    extras-install)
+        extras
     ;;
     *)
         if [ "bash" = "$0" ]; then
