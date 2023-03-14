@@ -26,19 +26,22 @@ lnyx -source https://raw.githubusercontent.com/possi/jas-profile/master/setup.sh
 
 Optional configurations:
 ```bash
-chsh -s /usr/bin/zsh
+~/.config/jas-profile/setup.sh zsh
+~/.config/jas-profile/setup.sh extras-install
 ```
 
 [Mintty for WSL](https://github.com/mintty/wsltty)
 -------------------------------
 
 ### My Defaults
-* Cygwin-Font: Consola with PowerLine ([consola.ttf](https://github.com/nicolalamacchia/powerline-consolas))
-  * Alternativ alle Powerline-Fonts:  
-    git clone https://github.com/powerline/fonts.git
-    (Admin) powershell.exe -ExecutionPolicy Bypass .\install.ps1
-  * https://github.com/Znuff/consolas-powerline
-* Ubuntu-Font: [DejaVu Sans Mono for Powerline](https://github.com/powerline/fonts)
+* Consolas NF:  
+  ```PowerShell
+  md in
+  md out
+  copy $Env:WINDIR/Fonts/consola*.ttf in/
+  docker run --rm -v ${PWD}/in:/in -v ${PWD}/out:/out nerdfonts/patcher -c
+  ```
+  (**Important:** Use Right-Click [UAC] Install for all Users)
 * Terminal-Size: 144 x 48
 * Background... `24,24,24`
 
@@ -53,6 +56,80 @@ CursorType=block
 ThemeFile=jas-profile
 # File jas-profile.minttyrc should be copied to %APPDATA%\wsltty\themes
 BackgroundColour=24,24,24
+```
+
+`%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json`
+```json
+{
+    "actions": 
+    [
+        {
+            "command": "scrollDownPage",
+            "keys": "shift+pgdn"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+shift+pgup"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+shift+pgdn"
+        },
+        {
+            "command": "scrollUpPage",
+            "keys": "shift+pgup"
+        },
+        // ...
+    ],
+    // ...
+    "initialCols": 160,
+    "initialRows": 48,
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "bellStyle": 
+            [
+                "audible",
+                "taskbar"
+            ],
+            "closeOnExit": "always",
+            "font": 
+            {
+                "face": "Consolas Nerd Font",
+                "size": 10.0
+            }
+        },
+        // ...
+    },
+    "schemes":
+    [
+        // ...
+        {
+            "background": "#181818",
+            "black": "#0C0C0C",
+            "blue": "#217DBB",
+            "brightBlack": "#404040",
+            "brightBlue": "#3498DB",
+            "brightCyan": "#40FFFF",
+            "brightGreen": "#2ECC71",
+            "brightPurple": "#9B59B6",
+            "brightRed": "#E74C3C",
+            "brightWhite": "#DFDFDF",
+            "brightYellow": "#F1C40F",
+            "cursorColor": "#BFBFBF",
+            "cyan": "#14888F",
+            "foreground": "#FFFFFF",
+            "green": "#25A25A",
+            "name": "Exa Mintty",
+            "purple": "#804399",
+            "red": "#D62C1A",
+            "selectionBackground": "#BABABA",
+            "white": "#CCCCCC",
+            "yellow": "#C29D0B"
+        }
+    ]
+}
 ```
 
 Internals:
