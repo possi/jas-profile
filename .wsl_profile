@@ -1,4 +1,5 @@
-alias start='cmd.exe /c start'
+#alias start='cmd.exe /c start'
+alias start='explorer.exe'
 unset APPDATA
 if [ ! -z "$USERPROFILE" ]; then
     alias c=$USERPROFILE
