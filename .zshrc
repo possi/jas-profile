@@ -105,3 +105,12 @@ source $HOME/.config/jas-profile/.profile zsh
 ## Startup-Time DEBUG
 #set +x
 #zprof
+
+# bun completions
+if [ -s "/home/starke/.bun/_bun" ]; then
+   source "/home/starke/.bun/_bun"
+
+    # bun
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+fi

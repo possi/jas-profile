@@ -3,6 +3,8 @@
 	email = jascha.git@ja-s.de
 [push]
 	default = upstream
+[pull]
+	ff = only
 [color]
 	diff = auto
 	status = auto
