@@ -8,7 +8,7 @@ Setup
 
 Optional recommended software before setup:
 ```bash
-apt install vim zsh screen
+apt install vim zsh screen zoxide
 ```
 
 ```bash
