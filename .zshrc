@@ -163,3 +163,11 @@ if which zoxide 2>&1 >/dev/null; then
 
     chpwd_functions=(${chpwd_functions[@]} "_zoxide_hook")
 fi 
+
+# pnpm
+export PNPM_HOME="/home/starke/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
