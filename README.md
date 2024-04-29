@@ -158,6 +158,7 @@ WSL Workarounds
     ```
   Source: https://devblogs.microsoft.com/commandline/per-directory-case-sensitivity-and-wsl/  
   Reason: https://github.com/yarnpkg/yarn/issues/5813
+* nvm Performance-Fix and Bun-compatibility: https://github.com/nvm-sh/nvm/issues/539#issuecomment-245791291
 
 References:
 -----------

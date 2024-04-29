@@ -1,19 +1,20 @@
 [user]
-	name = Jascha Starke
-	email = jascha.git@ja-s.de
+    name = Jascha Starke
+    email = jascha.git@ja-s.de
 [push]
-	default = upstream
+    default = upstream
 [pull]
-	ff = only
+    ff = only
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
 [core]
-	autocrlf = input
-	pager = less -F -X
+    autocrlf = input
+    pager = less -F -X
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-	permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
-	id = diff --word-diff-regex=.
-	rmb = "!f() { git branch --merged | grep -v master | while read i; do git branch -d $i; done; }; f"
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    lgs = log --color --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset %C(bold blue)<%an>%Creset%x09%C(yellow)%d%Creset %s' --date=short --abbrev-commit
+    permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
+    id = diff --word-diff-regex=.
+    rmb = "!f() { git branch --merged | grep -v master | while read i; do git branch -d $i; done; }; f"
